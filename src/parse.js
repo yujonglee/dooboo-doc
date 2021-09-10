@@ -14,12 +14,12 @@ const parse = () => {
     if (ts.SyntaxKind[child.kind] === 'InterfaceDeclaration') {
       ret.push({
         name: child.name.escapedText,
-        properties: child.members.map((property) => property.name.escapedText)
-      })
+        properties: child.members.map((property) => property.name.escapedText),
+      });
     }
   });
 
   return ret;
 };
 
-export default parse
+export default parse;
