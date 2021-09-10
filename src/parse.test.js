@@ -6,29 +6,51 @@ describe('parse', () => {
       {
         name: 'Styles',
         properties: [
-          'containerStyle',
-          'onElementContainerStyle',
-          'offElementContainerStyle',
-          'circleStyle',
-          'buttonStyle',
-          'circleColorOff',
-          'circleColorOn',
-          'backgroundColorOn',
-          'backgroundColorOff',
+          {
+            name: 'container',
+            optional: false,
+            type: 'ViewStyle',
+          },
+          {
+            name: 'onElementContainer',
+            optional: false,
+            type: 'StyleProp<ViewStyle>',
+          },
+          {
+            name: 'circleColorOff',
+            optional: true,
+            type: 'String',
+          },
         ],
       },
       {
         name: 'Props',
         properties: [
-          'testID',
-          'isOn',
-          'theme',
-          'style',
-          'styles',
-          'duration',
-          'onElement',
-          'offElement',
-          'onPress',
+          {
+            name: 'theme',
+            optional: true,
+            type: 'DoobooTheme',
+          },
+          {
+            name: 'styles',
+            optional: true,
+            type: 'Styles',
+          },
+          {
+            name: 'duration',
+            optional: true,
+            type: 'Number',
+          },
+          {
+            name: 'onElement',
+            optional: true,
+            type: 'ReactElement',
+          },
+          {
+            name: 'onPress',
+            optional: false,
+            type: 'Function',
+          },
         ],
       },
     ]);
