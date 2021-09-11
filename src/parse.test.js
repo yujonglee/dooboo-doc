@@ -1,6 +1,11 @@
+import getConfig from './getConfig';
 import parse from './parse';
 
+jest.mock('./getConfig.js');
+
 describe('parse', () => {
+  getConfig.mockReturnValue({ path: './testData/interface.ts' });
+
   it('parses interface', () => {
     expect(parse()).toEqual([
       {
