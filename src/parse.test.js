@@ -49,7 +49,7 @@ describe('parse', () => {
           {
             name: 'onPress',
             optional: false,
-            type: 'Function',
+            type: '(String) => Void',
           },
         ],
       },
