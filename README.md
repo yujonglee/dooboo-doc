@@ -16,7 +16,7 @@ interface Props {
   styles?: Styles;
   duration?: number;
   onElement?: ReactElement;
-  onPress: () => void;
+  onPress: (item: string) => void;
 }
 ```
 
