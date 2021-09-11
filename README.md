@@ -1,5 +1,7 @@
 # dooboo-doc
-Automated Document Generation for UI Framework. (Development in progress)
+Automated Document Generation for React Component written in Typesript. 
+
+(Development in progress)
 
 # Example
 ```ts
@@ -68,7 +70,7 @@ This is result of `parse()` of above code.
             {
                 name: 'onPress',
                 optional: false,
-                type: 'Function',
+                type: '(String) => Void',
             },
         ],
     },
