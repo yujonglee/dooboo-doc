@@ -8,19 +8,18 @@ class InternalType {
   }
 
   getString() {
-    const string = ts.SyntaxKind[this.type.kind];
-    const ret = trim(string);
+    const { parameters, type, kind } = this.type;
 
-    if (ret === 'Function') {
-      const { parameters, type } = this.type;
-
-      const parameterType = parameters.map((_) => trim(ts.SyntaxKind[_.type.kind]));
+    if (ts.SyntaxKind[kind] === 'FunctionType') {
+      const parameterType = parameters.map(
+        (parameter) => trim(ts.SyntaxKind[parameter.type.kind]),
+      );
       const returnType = trim(ts.SyntaxKind[type.kind]);
 
       return `(${parameterType.join(', ')}) => ${returnType}`;
     }
 
-    return ret;
+    return trim(ts.SyntaxKind[kind]);
   }
 }
 
