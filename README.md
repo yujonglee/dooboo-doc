@@ -41,8 +41,8 @@ This is result of `parse()` of above code.
                 type: 'String',
             },
         ],
-        },
-        {
+    },
+    {
         name: 'Props',
         properties: [
             {
