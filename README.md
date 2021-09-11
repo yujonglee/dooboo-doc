@@ -20,6 +20,19 @@ interface Props {
 }
 ```
 
+```js
+// dooboo-doc.config.js
+const config = {
+  target: './testData/interface.ts',
+};
+
+export default config;
+```
+
+
+
+
+
 This is result of `parse()` of above code.
 
 ```js

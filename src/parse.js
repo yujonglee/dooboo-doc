@@ -2,6 +2,7 @@ import fs from 'fs';
 import ts from 'typescript';
 
 import ExternalType from './ExternalType';
+import getConfig from './getConfig';
 import InternalType from './InternalType';
 
 const isInternalType = (type) => ts.SyntaxKind[type.kind] !== 'TypeReference';
@@ -11,9 +12,11 @@ const typeFactory = (type) => (isInternalType(type)
   : new ExternalType(type));
 
 const parse = () => {
+  const { path } = getConfig();
+
   const node = ts.createSourceFile(
-    'app.ts',
-    fs.readFileSync('./testData/interface.ts', 'utf8'),
+    '',
+    fs.readFileSync(path, 'utf8'),
     ts.ScriptTarget.Latest,
   );
 
