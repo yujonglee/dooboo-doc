@@ -3,10 +3,8 @@ import { fit, range } from './util';
 class Converter {
   constructor(data) {
     this.data = data;
-    this.columns = [data.name, 'Necessary', 'Types', 'Description', 'Default'];
-
-    this.columnHeads = [data.name, 'Necessary', 'Types', 'Description', 'Default'];
-    this.columnDatas = [
+    this.labels = [data.name, 'Necessary', 'Types', 'Description', 'Default'];
+    this.columnGetters = [
       ({ properties }) => properties.map(({ name }) => name),
       ({ properties }) => properties.map(({ optional }) => (optional ? '' : '✓')),
       ({ properties }) => properties.map(({ type }) => type),
@@ -16,50 +14,77 @@ class Converter {
   }
 
   get columnWidths() {
-    return this.columnDatas.map((func, i) => {
-      if (!func) {
-        return this.columnHeads[i].length;
-      }
+    const { data, labels, columnGetters } = this;
 
-      const dataLengths = func(this.data).map((_) => _.length);
+    return (
+      columnGetters.map((getter, columnIndex) => {
+        const label = labels[columnIndex];
 
-      return Math.max(...dataLengths, this.columnHeads[i].length);
-    });
+        if (!getter) {
+          return label.length;
+        }
+
+        const columnItems = getter(data);
+
+        return Math.max(
+          label.length,
+          ...columnItems.map((item) => item.length),
+        );
+      })
+    );
   }
 
   get header() {
-    const columnInfos = this.columnDatas.map((func, i) => {
-      if (!func) {
-        return this.columnHeads[i];
+    const {
+      data, labels, columnGetters, columnWidths,
+    } = this;
+
+    const formattedLabels = columnGetters.map((getter, columnIndex) => {
+      const label = labels[columnIndex];
+
+      if (!getter) {
+        return label;
       }
 
-      const dataLengths = func(this.data).map((_) => _.length);
+      const columnItems = getter(data);
 
-      return fit(Math.max(...dataLengths, this.columnHeads[i].length), this.columns[i]);
+      return fit(
+        Math.max(
+          label.length,
+          ...columnItems.map((item) => item.length),
+        ),
+        label,
+      );
     });
 
-    const columns = `| ${columnInfos.join(' | ')} |`;
-    const divider = `| ${this.columnWidths.map((number) => '-'.repeat(number)).join(' | ')} |`;
+    const divider = `| ${columnWidths.map((size) => '-'.repeat(size)).join(' | ')} |`;
 
-    return `${columns}\n${divider}`;
+    return `| ${formattedLabels.join(' | ')} |\n${divider}`;
   }
 
   get content() {
-    const { properties } = this.data;
+    const { data, columnGetters, columnWidths } = this;
+    const { properties } = data;
 
-    return range(properties.length).reduce((acc, nth) => {
-      const items = this.columnDatas.map((func, i) => {
-        if (!func) {
-          return fit(this.columnWidths[i]);
-        }
+    return (
+      range(properties.length).reduce((acc, rowIndex) => {
+        const items = columnGetters.map((getter, columnIndex) => {
+          const width = columnWidths[columnIndex];
 
-        return fit(this.columnWidths[i], this.columnDatas[i](this.data)[nth]);
-      });
+          if (!getter) {
+            return fit(width);
+          }
 
-      const row = `| ${items.join(' | ')} |\n`;
+          const columnItems = getter(data);
 
-      return acc + row;
-    }, '');
+          return fit(width, columnItems[rowIndex]);
+        });
+
+        const row = `| ${items.join(' | ')} |\n`;
+
+        return acc + row;
+      }, '')
+    );
   }
 
   get result() {
