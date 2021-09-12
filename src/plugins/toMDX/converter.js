@@ -62,10 +62,8 @@ class Converter {
     }, '');
   }
 
-  get MDX() {
-    const result = `${this.header}\n${this.content}`;
-
-    return result;
+  get result() {
+    return `${this.header}\n${this.content}`;
   }
 }
 

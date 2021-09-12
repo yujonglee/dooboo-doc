@@ -92,4 +92,4 @@ This is result of `parse()` of above code.
 
 Now Plugin converts it to useful form. For example, `toMDX` plugin convert it to MDX table.
 
-![스크린샷 2021-09-12 오후 4 49 06](https://user-images.githubusercontent.com/61503739/132978309-51adc287-bda9-4806-b052-08b441626bc7.png)
+![스크린샷](https://user-images.githubusercontent.com/61503739/132982103-9f18afe9-63f6-4e47-bc7a-1b9d3406b1ae.png)

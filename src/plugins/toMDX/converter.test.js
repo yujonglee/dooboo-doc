@@ -50,6 +50,6 @@ describe('Converter', () => {
                  + '| onElementContainer |           | StyleProp<ViewStyle> |             |         |\n'
                  + '| circleColorOff     | ✓         | String               |             |         |\n';
 
-    expect(converter.MDX).toBe(result);
+    expect(converter.result).toBe(result);
   });
 });
