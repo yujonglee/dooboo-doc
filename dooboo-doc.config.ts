@@ -1,4 +1,8 @@
-const config = {
+type Config = {
+  target: string
+}
+
+const config: Config = {
   target: './testData/interface.ts',
 };
 

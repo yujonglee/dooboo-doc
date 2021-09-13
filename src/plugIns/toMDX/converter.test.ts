@@ -1,6 +1,7 @@
 import Converter from './converter';
+import { Props } from '../../types';
 
-const data = {
+const data: Props = {
   name: 'Styles',
   properties: [
     {

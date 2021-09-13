@@ -1,10 +1,10 @@
 import docGen from './docGen';
 import getConfig from './getConfig';
 
-jest.mock('./getConfig.js');
+jest.mock('./getConfig.ts');
 
 describe('docGen', () => {
-  getConfig.mockReturnValue({ path: './testData/interface.ts' });
+  (getConfig as jest.Mock).mockReturnValue({ path: './testData/interface.ts' });
 
   it('generate document with given plugin', () => {
     expect(docGen({ plugIn: 'toMDX' })).toEqual([

@@ -4,9 +4,8 @@ module.exports = {
     es2021: true,
     jest: true,
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: ["airbnb-typescript"],
+  parser: '@typescript-eslint/parser',
   globals: {
     context: 'readonly',
     given: 'readonly',
@@ -15,5 +14,9 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  rules: {},
+  plugins: [
+    '@typescript-eslint',
+  ],
+  rules: {
+  },
 };

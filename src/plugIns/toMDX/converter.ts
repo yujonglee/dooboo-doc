@@ -1,19 +1,14 @@
 import { fit, range } from './util';
 
-class Converter {
-  constructor(data) {
-    this.data = data;
-    this.labels = [data.name, 'Necessary', 'Types', 'Description', 'Default'];
-    this.columnGetters = [
-      ({ properties }) => properties.map(({ name }) => name),
-      ({ properties }) => properties.map(({ optional }) => (optional ? '' : '✓')),
-      ({ properties }) => properties.map(({ type }) => type),
-      undefined,
-      undefined,
-    ];
+import PlugIn from '../plugIn'
+import { Props } from '../../types';
+
+class Converter extends PlugIn{    
+  constructor(data: Props) {
+    super(data)
   }
 
-  get columnWidths() {
+  get columnWidths(): number[] {
     const { data, labels, columnGetters } = this;
 
     return (
@@ -34,7 +29,7 @@ class Converter {
     );
   }
 
-  get header() {
+  get header(): string {
     const {
       data, labels, columnGetters, columnWidths,
     } = this;
@@ -62,7 +57,7 @@ class Converter {
     return `| ${formattedLabels.join(' | ')} |\n${divider}`;
   }
 
-  get content() {
+  get content(): string {
     const { data, columnGetters, columnWidths } = this;
     const { properties } = data;
 
@@ -87,7 +82,7 @@ class Converter {
     );
   }
 
-  get result() {
+  get result(): string {
     return `${this.header}\n${this.content}`;
   }
 }
