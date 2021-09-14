@@ -1,6 +1,8 @@
 # dooboo-doc
 Automated Document Generation for React Component written in Typesript. 
 
+Learn from [buehler/node-typescript-parser](https://github.com/buehler/node-typescript-parser) when I was stucked.
+
 (Development in progress)
 
 # Example
