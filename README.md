@@ -10,7 +10,7 @@ Learned from [buehler/node-typescript-parser](https://github.com/buehler/node-ty
 ## Install
 ```
 git clone git@github.com:yujong-lee/dooboo-doc.git
-yarn
+cd dooboo-doc && yarn
 ```
 
 ## Config
