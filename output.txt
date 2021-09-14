@@ -1,14 +1,23 @@
-| Styles             | Necessary | Types                | Description | Default |
-| ------------------ | --------- | -------------------- | ----------- | ------- |
-| container          | ✓         | ViewStyle            |             |         |
-| onElementContainer | ✓         | StyleProp<ViewStyle> |             |         |
-| circleColorOff     |           | String               |             |         |
+| Styles              | Necessary | Types                | Description | Default |
+| ------------------- | --------- | -------------------- | ----------- | ------- |
+| container           |           | ViewStyle            |             |         |
+| onElementContainer  |           | StyleProp<ViewStyle> |             |         |
+| offElementContainer |           | StyleProp<ViewStyle> |             |         |
+| circle              |           | ViewStyle            |             |         |
+| button              |           | StyleProp<ViewStyle> |             |         |
+| circleColorOff      |           | String               |             |         |
+| circleColorOn       |           | String               |             |         |
+| backgroundColorOn   |           | String               |             |         |
+| backgroundColorOff  |           | String               |             |         |
 
 
-| Props     | Necessary | Types            | Description | Default |
-| --------- | --------- | ---------------- | ----------- | ------- |
-| theme     |           | DoobooTheme      |             |         |
-| styles    |           | Styles           |             |         |
-| duration  |           | Number           |             |         |
-| onElement |           | ReactElement     |             |         |
-| onPress   | ✓         | (String) => Void |             |         |
+| Props      | Necessary | Types                | Description | Default |
+| ---------- | --------- | -------------------- | ----------- | ------- |
+| testID     |           | String               |             |         |
+| isOn       | ✓         | Boolean              |             |         |
+| style      |           | StyleProp<ViewStyle> |             |         |
+| styles     |           | Styles               |             |         |
+| duration   |           | Number               |             |         |
+| onElement  |           | ReactElement         |             |         |
+| offElement |           | ReactElement         |             |         |
+| onPress    |           | () => Void           |             |         |
