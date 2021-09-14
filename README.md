@@ -3,8 +3,6 @@ Automated Document Generation for React Component written in Typescript.
 
 Learned from [buehler/node-typescript-parser](https://github.com/buehler/node-typescript-parser) when I was stucked.
 
-(Development in progress)
-
 # Example
 ## Overview
 ![Untitled Diagram drawio-3](https://user-images.githubusercontent.com/61503739/133244646-ea73ef1c-c9ea-44d5-a9eb-300ae46011d2.png)

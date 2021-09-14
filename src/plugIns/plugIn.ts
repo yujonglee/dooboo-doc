@@ -1,11 +1,11 @@
-import type { DocInterface, Getter } from '../types';
+import type { DocInterface, Resolver } from '../types';
 
 export default abstract class PlugIn {
     data: DocInterface;
 
     labels: string[];
 
-    columnResolvers: Getter[];
+    columnResolvers: Resolver[];
 
     constructor(data: DocInterface) {
       this.data = data;
