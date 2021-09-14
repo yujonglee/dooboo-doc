@@ -1,4 +1,4 @@
-import { fit, range } from './util';
+import { fit } from './util';
 
 describe('fit', () => {
   context('when standard is longer than string length', () => {
@@ -17,11 +17,5 @@ describe('fit', () => {
     it('returns spaces', () => {
       expect(fit(3)).toBe('   ');
     });
-  });
-});
-
-describe('range', () => {
-  it('returns array of 0 to given value - 1', () => {
-    expect(range(4)).toEqual([0, 1, 2, 3]);
   });
 });

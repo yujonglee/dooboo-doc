@@ -1,48 +1,25 @@
-import { fit, range } from './util';
-
 import PlugIn from '../plugIn';
+
+import { range } from '../commonUtils';
+import { fit } from './util';
 
 class Converter extends PlugIn {
   get columnWidths(): number[] {
-    const { data, labels, columnGetters } = this;
+    const { columns } = this;
 
     return (
-      columnGetters.map((getter, columnIndex) => {
-        const label = labels[columnIndex];
-
-        if (!getter) {
-          return label.length;
-        }
-
-        const columnItems = getter(data);
-
-        return Math.max(
-          label.length,
-          ...columnItems.map((item) => item.length),
-        );
-      })
+      columns.map((column) => Math.max(...column.map((item) => item.length)))
     );
   }
 
   get header(): string {
-    const {
-      data, labels, columnGetters, columnWidths,
-    } = this;
+    const { labels, columns, columnWidths } = this;
 
-    const formattedLabels = columnGetters.map((getter, columnIndex) => {
-      const label = labels[columnIndex];
-
-      if (!getter) {
-        return label;
-      }
-
-      const columnItems = getter(data);
+    const formattedLabels = columns.map((column, i) => {
+      const label = labels[i];
 
       return fit(
-        Math.max(
-          label.length,
-          ...columnItems.map((item) => item.length),
-        ),
+        Math.max(...column.map((item) => item.length)),
         label,
       );
     });
@@ -53,21 +30,19 @@ class Converter extends PlugIn {
   }
 
   get content(): string {
-    const { data, columnGetters, columnWidths } = this;
+    const { data, columns, columnWidths } = this;
     const { properties } = data;
 
     return (
       range(properties.length).reduce((acc, rowIndex) => {
-        const items = columnGetters.map((getter, columnIndex) => {
-          const width = columnWidths[columnIndex];
+        const items = columns.map((column, colIndex) => {
+          const width = columnWidths[colIndex];
 
-          if (!getter) {
+          if (columns.length === 1) {
             return fit(width);
           }
 
-          const columnItems = getter(data);
-
-          return fit(width, columnItems[rowIndex]);
+          return fit(width, column[rowIndex + 1]);
         });
 
         const row = `| ${items.join(' | ')} |\n`;
