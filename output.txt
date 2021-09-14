@@ -1,0 +1,14 @@
+| Styles             | Necessary | Types                | Description | Default |
+| ------------------ | --------- | -------------------- | ----------- | ------- |
+| container          | ✓         | ViewStyle            |             |         |
+| onElementContainer | ✓         | StyleProp<ViewStyle> |             |         |
+| circleColorOff     |           | String               |             |         |
+
+
+| Props     | Necessary | Types            | Description | Default |
+| --------- | --------- | ---------------- | ----------- | ------- |
+| theme     |           | DoobooTheme      |             |         |
+| styles    |           | Styles           |             |         |
+| duration  |           | Number           |             |         |
+| onElement |           | ReactElement     |             |         |
+| onPress   | ✓         | (String) => Void |             |         |

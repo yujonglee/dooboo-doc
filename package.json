@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "docgen": "npx ts-node src/app.ts",
     "test": "jest"
   },
   "dependencies": {

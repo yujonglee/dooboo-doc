@@ -1,9 +1,10 @@
 import getConfig from './getConfig';
 
 describe('getCofig', () => {
-  it('parses path', () => {
-    const { path } = getConfig();
+  it('parses path of input and output', () => {
+    const { input, output } = getConfig();
 
-    expect(path).toBe('./testData/interface.ts');
+    expect(input).toBe('./testData/interface.ts');
+    expect(output).toBe('./output.txt');
   });
 });

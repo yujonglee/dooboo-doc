@@ -14,11 +14,11 @@ const typeFactory = (type: TypeNode) => (
     : new InternalType(type));
 
 const parse = () => {
-  const { path } = getConfig();
+  const { input } = getConfig();
 
   const node = ts.createSourceFile(
     '',
-    fs.readFileSync(path, 'utf8'),
+    fs.readFileSync(input, 'utf8'),
     ts.ScriptTarget.Latest,
   );
 

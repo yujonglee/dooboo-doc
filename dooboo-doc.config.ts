@@ -1,9 +1,11 @@
 type Config = {
-  target: string
+  input: string
+  output: string
 }
 
 const config: Config = {
-  target: './testData/interface.ts',
+  input: './testData/interface.ts',
+  output: './output.txt',
 };
 
 export default config;

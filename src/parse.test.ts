@@ -4,7 +4,7 @@ import parse from './parse';
 jest.mock('./getConfig.ts');
 
 describe('parse', () => {
-  (getConfig as jest.Mock).mockReturnValue({ path: './testData/interface.ts' });
+  (getConfig as jest.Mock).mockReturnValue({ input: './testData/interface.ts' });
 
   it('parses interface', () => {
     expect(parse()).toEqual([

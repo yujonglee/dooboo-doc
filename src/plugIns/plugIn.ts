@@ -27,7 +27,7 @@ export default abstract class PlugIn {
           return [label];
         }
 
-        return [label, ...columnResolvers[i](data)];
+        return [label, ...columnResolvers[i]!(data)];
       });
     }
 }

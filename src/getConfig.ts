@@ -1,9 +1,9 @@
 import config from '../dooboo-doc.config';
 
 const getConfig = () => {
-  const { target } = config;
+  const { input, output } = config;
 
-  return { path: target };
+  return { input, output };
 };
 
 export default getConfig;
