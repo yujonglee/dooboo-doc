@@ -1,13 +1,8 @@
 import { fit, range } from './util';
 
-import PlugIn from '../plugIn'
-import { Props } from '../../types';
+import PlugIn from '../plugIn';
 
-class Converter extends PlugIn{    
-  constructor(data: Props) {
-    super(data)
-  }
-
+class Converter extends PlugIn {
   get columnWidths(): number[] {
     const { data, labels, columnGetters } = this;
 

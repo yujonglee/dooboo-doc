@@ -13,7 +13,7 @@ interface Styles {
   circleColorOff?: string;
 }
 
-interface Props {
+interface DocInterface {
   theme?: DoobooTheme;
   styles?: Styles;
   duration?: number;
@@ -60,7 +60,7 @@ This is result of `parse()` of above code.
         ],
     },
     {
-        name: 'Props',
+        name: 'DocInterface',
         properties: [
             {
                 name: 'theme',

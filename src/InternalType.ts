@@ -1,4 +1,4 @@
-import ts, {SignatureDeclarationBase, TypeNode } from 'typescript';
+import { SyntaxKind, SignatureDeclarationBase, TypeNode } from 'typescript';
 
 const trim = (input: string) => input.replace(/Keyword$|Type$/, '');
 
@@ -12,16 +12,16 @@ class InternalType {
   getString() {
     const { parameters, type, kind } = this.type;
 
-    if (ts.SyntaxKind[kind] === 'FunctionType') {
+    if (kind === SyntaxKind.FunctionType) {
       const parameterType = parameters.map(
-        (parameter) => trim(ts.SyntaxKind[parameter.type!.kind]),
+        (parameter) => trim(SyntaxKind[parameter.type!.kind]),
       );
-      const returnType = trim(ts.SyntaxKind[type!.kind]);
+      const returnType = trim(SyntaxKind[type!.kind]);
 
       return `(${parameterType.join(', ')}) => ${returnType}`;
     }
 
-    return trim(ts.SyntaxKind[kind]);
+    return trim(SyntaxKind[kind]);
   }
 }
 

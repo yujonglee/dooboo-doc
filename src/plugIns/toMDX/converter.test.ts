@@ -1,7 +1,7 @@
 import Converter from './converter';
-import { Props } from '../../types';
+import { DocInterface } from '../../types';
 
-const data: Props = {
+const data: DocInterface = {
   name: 'Styles',
   properties: [
     {

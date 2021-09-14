@@ -1,16 +1,16 @@
-import ts, { Identifier, InterfaceDeclaration, PropertySignature, TypeNode } from 'typescript';
+import fs from 'fs';
+import ts, {
+  Identifier, isInterfaceDeclaration, TypeNode, isTypeReferenceNode, isPropertySignature,
+} from 'typescript';
 
+import { Property, DocInterface } from './types';
+import getConfig from './getConfig';
 import ExternalType from './ExternalType';
 import InternalType from './InternalType';
-import { Property, Props } from './types';
-import fs from 'fs';
-import getConfig from './getConfig';
 
-const isInternalType = (type: TypeNode) => ts.SyntaxKind[type.kind] !== 'TypeReference';
-
-const typeFactory = (type: TypeNode) => (isInternalType(type)
-  ? new InternalType(type)
-  : new ExternalType(type));
+const typeFactory = (type: TypeNode) => (isTypeReferenceNode(type)
+  ? new ExternalType(type)
+  : new InternalType(type));
 
 const parse = () => {
   const { path } = getConfig();
@@ -21,26 +21,31 @@ const parse = () => {
     ts.ScriptTarget.Latest,
   );
 
-  const ret: Props[] = [];
+  const ret: DocInterface[] = [];
 
   node.forEachChild((child) => {
-    if (ts.SyntaxKind[child.kind] === 'InterfaceDeclaration') {
-      const properties = (child as InterfaceDeclaration).members.reduce<Property[]>(
+    if (isInterfaceDeclaration(child)) {
+      const properties = child.members.reduce<Property[]>(
         // @ts-ignore
         (acc, cur) => {
-          const { type, name, questionToken } = cur as PropertySignature;
-          return (
-            [...acc, {
-              name: (name as Identifier).escapedText,
-              type: typeFactory(type!).getString(),
-              optional: !!questionToken,
-            }]
-          )
+          if (isPropertySignature(cur)) {
+            const { type, name, questionToken } = cur;
+
+            return (
+              [...acc, {
+                name: (name as Identifier).escapedText,
+                type: typeFactory(type!).getString(),
+                optional: !!questionToken,
+              }]
+            );
+          }
+
+          return acc;
         }, [],
       ) as unknown as Property[];
 
       ret.push({
-        name: (child as InterfaceDeclaration).name.escapedText as string,
+        name: child.name.escapedText as string,
         properties,
       });
     }
@@ -50,4 +55,3 @@ const parse = () => {
 };
 
 export default parse;
-

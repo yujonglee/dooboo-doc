@@ -10,7 +10,8 @@ const docGen = ({ plugIn }: {plugIn: string}) => {
 
   return (
     data.map(
-      (declaration) => new (Converters[plugIn])(declaration).result)
+      (declaration) => new (Converters[plugIn])(declaration).result,
+    )
   );
 };
 
