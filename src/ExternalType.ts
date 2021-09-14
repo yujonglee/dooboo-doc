@@ -1,10 +1,10 @@
-import { Identifier, TypeNode, TypeReferenceNode } from 'typescript';
+import { Identifier, TypeReferenceNode } from 'typescript';
 
 class ExternalType {
   type: TypeReferenceNode;
 
-  constructor(type: TypeNode) {
-    this.type = type as TypeReferenceNode;
+  constructor(type: TypeReferenceNode) {
+    this.type = type;
   }
 
   getString() {

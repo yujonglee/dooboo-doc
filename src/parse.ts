@@ -8,9 +8,10 @@ import getConfig from './getConfig';
 import ExternalType from './ExternalType';
 import InternalType from './InternalType';
 
-const typeFactory = (type: TypeNode) => (isTypeReferenceNode(type)
-  ? new ExternalType(type)
-  : new InternalType(type));
+const typeFactory = (type: TypeNode) => (
+  isTypeReferenceNode(type)
+    ? new ExternalType(type)
+    : new InternalType(type));
 
 const parse = () => {
   const { path } = getConfig();
