@@ -7,27 +7,35 @@ Learned from [buehler/node-typescript-parser](https://github.com/buehler/node-ty
 ## Overview
 ![Untitled Diagram drawio-3](https://user-images.githubusercontent.com/61503739/133244646-ea73ef1c-c9ea-44d5-a9eb-300ae46011d2.png)
 
+## Install
+```
+git clone git@github.com:yujong-lee/dooboo-doc.git
+yarn
+```
 
 ## Config
 ```js
+// dooboo-doc.config.ts
 type Config = {
+  plugIn: string
   input: string
   output: string
 }
 
 const config: Config = {
+  plugIn: 'toMDX',
   input: './testData/interface.ts',
   output: './output.txt',
 };
+
+export default config;
 ```
 
-## Input
 Currently, only the `Interface` is supported and `Type` is not supported.
 
-`'./testData/interface.ts'` is minified version of `dooboo-ui/SwitchToggle`(https://github.com/dooboolab/dooboo-ui/blob/master/main/SwitchToggle.tsx).
+`'./testData/interface.ts'` is minified version of `SwitchToggle`(https://github.com/dooboolab/dooboo-ui/blob/master/main/SwitchToggle.tsx) in `dobooo-ui`.
 
-
-## Output
+## Run
 ```
 yarn docgen
 ```
