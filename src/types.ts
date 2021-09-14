@@ -11,4 +11,4 @@ export type DocInterface = {
     properties: Property[]
 }
 
-export type Getter = ((data: DocInterface) => string[]) | undefined
+export type Resolver = ((data: DocInterface) => string[]) | undefined
