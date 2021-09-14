@@ -1,12 +1,16 @@
 # dooboo-doc
-Automated Document Generation for React Component written in Typesript. 
+Automated Document Generation for React Component written in Typescript. 
 
-Learn from [buehler/node-typescript-parser](https://github.com/buehler/node-typescript-parser) when I was stucked.
+Learned from [buehler/node-typescript-parser](https://github.com/buehler/node-typescript-parser) when I was stucked.
 
 (Development in progress)
 
 # Example
-## dooboo-doc.config.js
+## Overview
+![Untitled Diagram drawio-3](https://user-images.githubusercontent.com/61503739/133244646-ea73ef1c-c9ea-44d5-a9eb-300ae46011d2.png)
+
+
+## Config
 ```js
 type Config = {
   input: string
@@ -19,16 +23,15 @@ const config: Config = {
 };
 ```
 
-## testData/interface.ts
+## Input
 Currently, only the `Interface` is supported and `Type` is not supported.
 
-[Test data](https://github.com/dooboolab/dooboo-ui/blob/master/main/SwitchToggle.tsx) is from `dooboo-ui/SwitchToggle`.
+`'./testData/interface.ts'` is minified version of `dooboo-ui/SwitchToggle`(https://github.com/dooboolab/dooboo-ui/blob/master/main/SwitchToggle.tsx).
 
 
-## Result
+## Output
 ```
 yarn docgen
 ```
-
-
-[After toMDX PlugIn applied](https://github.com/yujong-lee/dooboo-doc/blob/master/output.txt)
+Currently, `default value` is not supported.
+[Result of toMDX plugIn](https://github.com/yujong-lee/dooboo-doc/blob/master/output.txt)
