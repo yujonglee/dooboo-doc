@@ -4,10 +4,10 @@ import getConfig from './getConfig';
 jest.mock('./getConfig.ts');
 
 describe('docGen', () => {
-  (getConfig as jest.Mock).mockReturnValue({ input: './testData/interface.ts' });
+  (getConfig as jest.Mock).mockReturnValue({ plugIn: 'toMDX', input: './testData/interface.ts' });
 
   it('generate document with given plugin', () => {
-    expect(docGen({ plugIn: 'toMDX' })).toEqual([
+    expect(docGen()).toEqual([
       '| Styles             | Necessary | Types                | Description | Default |\n'
     + '| ------------------ | --------- | -------------------- | ----------- | ------- |\n'
     + '| container          | ✓         | ViewStyle            |             |         |\n'

@@ -5,26 +5,17 @@ import styled from '@emotion/native';
 import {useTheme} from './theme/ThemeProvider';
 
 interface Styles {
-  container?: ViewStyle;
-  onElementContainer?: StyleProp<ViewStyle>;
-  offElementContainer?: StyleProp<ViewStyle>;
-  circle?: ViewStyle;
-  button?: StyleProp<ViewStyle>;
+  container: ViewStyle;
+  onElementContainer: StyleProp<ViewStyle>;
   circleColorOff?: string;
-  circleColorOn?: string;
-  backgroundColorOn?: string;
-  backgroundColorOff?: string;
 }
 
 interface Props {
-  testID?: string;
-  isOn: boolean;
-  style?: StyleProp<ViewStyle>;
+  theme?: DoobooTheme;
   styles?: Styles;
   duration?: number;
   onElement?: ReactElement;
-  offElement?: ReactElement;
-  onPress?: () => void;
+  onPress: (item: string) => void;
 }
 
 // Typing limitation: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/12202

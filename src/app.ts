@@ -5,5 +5,5 @@ import docGen from './docGen';
 
 fs.writeFileSync(
   getConfig().output,
-  docGen({ plugIn: 'toMDX' }).join('\n\n'),
+  docGen().join('\n\n'),
 );
