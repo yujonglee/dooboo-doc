@@ -33,7 +33,7 @@ export default config;
 
 Currently, only the `Interface` is supported and `Type` is not supported.
 
-`'./testData/interface.ts'` is minified version of `SwitchToggle`(https://github.com/dooboolab/dooboo-ui/blob/master/main/SwitchToggle.tsx) in `dobooo-ui`.
+`'./testData/interface.ts'` is minified version of [SwitchToggle](https://github.com/dooboolab/dooboo-ui/blob/master/main/SwitchToggle.tsx) in `dobooo-ui`.
 
 ## Run
 ```
